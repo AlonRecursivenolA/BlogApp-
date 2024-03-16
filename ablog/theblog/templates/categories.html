@@ -1,0 +1,33 @@
+    {% extends 'base.html' %}
+
+
+        {% block title %}
+          {{ cats }} category
+        {% endblock %}
+
+    {% block content %}
+    <h1>{{ cats }} related posts</h1>
+
+
+        <ul>
+        {% for post in category__posts %}
+                    <small>By: {{post.author.first_name}}
+    {{post.author.last_name}} - {{ post.post_date }}
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <a href="{% url 'edit-post' post.pk %}" style="margin-right: 8px">Edit</a>
+            <a href="{% url 'delete-post' post.pk %}">Delete</a><br/></small><br/>
+
+        {% endif %}
+    {% endif %}
+    <hr>
+    <br/>
+    <div class="post.body-container">
+    {{post.body|safe}}
+        </div>
+            <br/><br/>
+
+        {% endfor %}
+        </ul>
+
+    {% endblock %}

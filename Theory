@@ -1,0 +1,3 @@
+how does the browser connect with our server?
+
+browser requests the urls.py for auth that auth request sent to views.py and the response sent back to the browser

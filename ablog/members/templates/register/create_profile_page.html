@@ -1,0 +1,25 @@
+    {% extends 'base.html' %}
+    {% load static %}
+
+
+    {% block title %}
+      Create Profile Page
+    {% endblock %}
+
+    {% block content %}
+        <h1>Create Profile Page</h1>
+    <br/><br/>
+
+    {% if user.is_authenticated %}
+        <div class="form-group">
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class="btn btn-secondary">Create Profile Page</button>
+          </form>
+        </div>
+    {% else %}
+        Only the owner of this profile can edit this profile
+        
+    {% endif %}
+    {% endblock %}
